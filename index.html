@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muuze's Score Tracker — Simple Game Score Tracker</title>
+  <meta name="description" content="A simple score tracking app that can be configured for any number of games. Free on the App Store for iPhone and iPad." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #6c63ff;
+      --accent-light: #a09bff;
+      --bg: #0a0a0d;
+      --surface: #14141a;
+      --border: #22222c;
+      --text: #f0f0f0;
+      --muted: #888;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10,10,13,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .nav-cta:hover { background: #574fd6; }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 1.5rem 5rem;
+      gap: 1.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-badge span { color: var(--accent-light); font-weight: 600; }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      max-width: 600px;
+    }
+
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent-light), #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 440px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .btn-primary:hover { background: #574fd6; transform: translateY(-1px); }
+
+    .app-store-badge {
+      display: inline-block;
+      height: 52px;
+    }
+
+    .app-store-badge img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* FEATURES */
+    .section {
+      padding: 5rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 3rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .feature-card:hover { border-color: #3a3a50; }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 6rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.25rem;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      max-width: 400px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">Muuze's Score Tracker</a>
+    <a class="nav-cta" href="https://apps.apple.com/us/app/muuzes-score-tracker/id6759584586" target="_blank" rel="noopener">
+      Download Free
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge"><span>Free</span> · iPhone &amp; iPad</div>
+
+    <h1>Track scores for <em>any game,</em> instantly.</h1>
+
+    <p class="hero-sub">
+      A clean, flexible score tracker you can configure for any number of players or teams — no setup, no fuss.
+    </p>
+
+    <div class="hero-actions">
+      <a class="app-store-badge"
+         href="https://apps.apple.com/us/app/muuzes-score-tracker/id6759584586"
+         target="_blank" rel="noopener"
+         aria-label="Download on the App Store">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us"
+             alt="Download on the App Store" />
+      </a>
+    </div>
+
+    <div class="hero-meta">
+      <span>Free</span>
+      <span>·</span>
+      <span>iOS 17.6+</span>
+      <span>·</span>
+      <span>iPhone &amp; iPad</span>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FEATURES -->
+  <section class="section">
+    <p class="section-label">Features</p>
+    <h2 class="section-title">Everything you need, nothing you don't.</h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🎮</span>
+        <h3>Any Game</h3>
+        <p>Configure the tracker for card games, board games, sports, or anything else that needs a score.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">👥</span>
+        <h3>Any Number of Players</h3>
+        <p>Add as many players or teams as you need — no arbitrary limits.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h3>Zero Setup</h3>
+        <p>Open the app and start tracking. No accounts, no onboarding, no friction.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📱</span>
+        <h3>iPhone &amp; iPad</h3>
+        <p>Native experience on all your Apple devices. Optimized for iOS 17.6 and later.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Ready to play?</h2>
+    <p>Download Muuze's Score Tracker free from the App Store and keep score in seconds.</p>
+    <a class="app-store-badge"
+       href="https://apps.apple.com/us/app/muuzes-score-tracker/id6759584586"
+       target="_blank" rel="noopener"
+       aria-label="Download on the App Store">
+      <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us"
+           alt="Download on the App Store" />
+    </a>
+  </section>
+
+  <footer>
+    <span>© 2026 Dave Foster</span>
+    <div style="display:flex;gap:1rem;">
+      <a href="https://apps.apple.com/us/app/muuzes-score-tracker/id6759584586" target="_blank" rel="noopener">App Store</a>
+    </div>
+  </footer>
+
+</body>
+</html>
