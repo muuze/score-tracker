@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Muuze's Score Tracker</title>
+  <meta name="description" content="Privacy Policy for Muuze's Score Tracker iOS app." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #6c63ff;
+      --accent-light: #a09bff;
+      --bg: #0a0a0d;
+      --surface: #14141a;
+      --border: #22222c;
+      --text: #f0f0f0;
+      --muted: #888;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10,10,13,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .nav-cta:hover { background: #574fd6; }
+
+    /* MAIN */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .page-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .last-updated {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    .prose section {
+      margin-bottom: 2.5rem;
+    }
+
+    .prose h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .prose p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+    }
+
+    .prose ul {
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .prose li {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .prose a {
+      color: var(--accent-light);
+      text-decoration: none;
+    }
+
+    .prose a:hover { text-decoration: underline; }
+
+    .prose strong { color: var(--text); font-weight: 600; }
+
+    .highlight-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">Muuze's Score Tracker</a>
+    <a class="nav-cta" href="https://apps.apple.com/us/app/muuzes-score-tracker/id6759584586" target="_blank" rel="noopener">
+      Download Free
+    </a>
+  </nav>
+
+  <main>
+    <p class="page-label">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last updated: February 23, 2026</p>
+
+    <div class="prose">
+
+      <section>
+        <h2>Overview</h2>
+        <div class="highlight-box">
+          Score Tracker is a free iOS app for tracking scores in games. All game data (games, players, and scores) is stored locally on your device and is never transmitted to any server.
+        </div>
+      </section>
+
+      <section>
+        <h2>Data We Collect</h2>
+        <p>Score Tracker itself does not collect, store, or transmit any personal information.</p>
+        <p>The app displays ads provided by Google AdMob. Google may collect the following data to serve relevant ads:</p>
+        <ul>
+          <li>Device identifiers (such as IDFA, if you grant tracking permission)</li>
+          <li>IP address and approximate location</li>
+          <li>Ad interaction and usage data</li>
+          <li>Diagnostic data</li>
+        </ul>
+        <p>This data is collected and processed by Google in accordance with their <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy policy</a>.</p>
+      </section>
+
+      <section>
+        <h2>App Tracking Transparency</h2>
+        <p>On first launch, the app will ask for your permission to track your device for advertising purposes. If you decline, ads will still be shown but will not be personalized. You can change this at any time in <strong>Settings &gt; Privacy &amp; Security &gt; Tracking</strong>.</p>
+      </section>
+
+      <section>
+        <h2>In-App Purchases</h2>
+        <p>Score Tracker offers a one-time Pro upgrade purchase. All purchases are processed by Apple. We do not collect or store any payment information.</p>
+      </section>
+
+      <section>
+        <h2>Children's Privacy</h2>
+        <p>This app is not directed at children under 13 and we do not knowingly collect data from children.</p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>If you have any questions about this privacy policy, please contact us at: <a href="mailto:muuze.games@gmail.com">muuze.games@gmail.com</a></p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2026 Dave Foster</span>
+    <div style="display:flex;gap:1rem;">
+      <a href="/">Home</a>
+      <a href="support.html">Support</a>
+      <a href="https://apps.apple.com/us/app/muuzes-score-tracker/id6759584586" target="_blank" rel="noopener">App Store</a>
+    </div>
+  </footer>
+
+</body>
+</html>
