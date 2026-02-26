@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Muuze's Score Tracker</title>
+  <meta name="description" content="Support and FAQ for Muuze's Score Tracker iOS app." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #6c63ff;
+      --accent-light: #a09bff;
+      --bg: #0a0a0d;
+      --surface: #14141a;
+      --border: #22222c;
+      --text: #f0f0f0;
+      --muted: #888;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10,10,13,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .nav-cta:hover { background: #574fd6; }
+
+    /* MAIN */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .page-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    /* CONTACT */
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-card a {
+      color: var(--accent-light);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* FAQ */
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    details[open] { border-color: #3a3a50; }
+
+    summary {
+      padding: 1rem 1.25rem;
+      font-size: 0.975rem;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: '+';
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    details[open] summary::after {
+      content: '−';
+    }
+
+    .faq-body {
+      padding: 0 1.25rem 1.1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      border-top: 1px solid var(--border);
+      padding-top: 0.9rem;
+    }
+
+    .faq-body ul {
+      margin-top: 0.5rem;
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .faq-body strong { color: var(--text); }
+
+    /* PRIVACY */
+    .privacy-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent-light);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .privacy-link:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">Muuze's Score Tracker</a>
+    <a class="nav-cta" href="https://apps.apple.com/us/app/muuzes-score-tracker/id6759584586" target="_blank" rel="noopener">
+      Download Free
+    </a>
+  </nav>
+
+  <main>
+    <p class="page-label">Support</p>
+    <h1>How can we help?</h1>
+
+    <!-- CONTACT -->
+    <div class="contact-card">
+      <span class="contact-icon">✉️</span>
+      <div>
+        <p>Questions or feedback? Reach out directly.</p>
+        <a href="mailto:muuze.games@gmail.com">muuze.games@gmail.com</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+
+      <details>
+        <summary>How do I create a new game?</summary>
+        <div class="faq-body">
+          Tap the <strong>+</strong> button in the top right corner of the main screen.
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I delete a game?</summary>
+        <div class="faq-body">
+          Swipe left on any game in the list and tap <strong>Delete</strong>.
+        </div>
+      </details>
+
+      <details>
+        <summary>What is the difference between Basic and Rounds scoring?</summary>
+        <div class="faq-body">
+          <ul>
+            <li><strong>Basic</strong> — freely add or subtract points from each player at any time.</li>
+            <li><strong>Rounds</strong> — enter scores round by round and see a full round history table.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I end a game?</summary>
+        <div class="faq-body">
+          Open the game and tap <strong>End Game</strong> at the bottom of the screen.
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I start a new game with the same players?</summary>
+        <div class="faq-body">
+          After a game ends, tap <strong>New Game</strong> at the bottom of the screen. All players carry over with scores reset to zero.
+        </div>
+      </details>
+
+      <details>
+        <summary>What is Score Tracker Pro?</summary>
+        <div class="faq-body">
+          A one-time purchase that unlocks <strong>Rounds</strong> scoring mode, unlimited games, and removes the ad banner.
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I restore my Pro purchase on a new device?</summary>
+        <div class="faq-body">
+          Open the upgrade sheet and tap <strong>Restore Purchase</strong>.
+        </div>
+      </details>
+
+      <details>
+        <summary>How many games can I have without Pro?</summary>
+        <div class="faq-body">
+          Up to <strong>3 games</strong> at a time. You can delete a game to make room for a new one, or upgrade to Pro for unlimited games.
+        </div>
+      </details>
+
+    </div>
+
+    <!-- PRIVACY -->
+    <h2>Privacy</h2>
+    <a class="privacy-link" href="https://gist.github.com/muuze/87f744ca08511bcc5915757331cb1624" target="_blank" rel="noopener">
+      View Privacy Policy ↗
+    </a>
+
+  </main>
+
+  <footer>
+    <span>© 2026 Dave Foster</span>
+    <div style="display:flex;gap:1rem;">
+      <a href="/">Home</a>
+      <a href="https://apps.apple.com/us/app/muuzes-score-tracker/id6759584586" target="_blank" rel="noopener">App Store</a>
+    </div>
+  </footer>
+
+</body>
+</html>
